@@ -1,0 +1,3 @@
+[submodule "cp-template"]
+	path = cp-template
+	url = git@github.com:poplpr/cp-template.git
