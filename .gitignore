@@ -35,4 +35,4 @@
 .vscode
 
 # my test.in
-test.in
+*.in
