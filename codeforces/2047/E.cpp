@@ -154,6 +154,7 @@ template <class T> struct fenwick_tree {
     }
 
     /**
+     * 使用前要求数组中的元素必须每一个都为非负数，否则正确性无法保证。
      * 返回前缀和 [0, ret) 小于等于 v 的最后一个位置。
      * params::v >= 0
      */
@@ -217,8 +218,8 @@ void solve() {
 
     for (int i = 0; i < n; i++) {
         int pi = p[i];
-        fl.add(y[i], +1);
-        fr.add(y[i], -1);
+        fl.add(y[pi], +1);
+        fr.add(y[pi], -1);
 
         if (i + 1 < n && x[p[i+1]] == x[pi]) continue;
 
@@ -231,7 +232,7 @@ void solve() {
 
             int yl = max(fl.max_right(ans), fr.max_right(ans));
             int yr = min(fl.max_right(i + 1 - (ans + 1)), fr.max_right(n - (i + 1) - (ans + 1)));
-            if (yl > yr) break;
+            if (yl >= yr) break;
             ans++;
             ansx = xd[x[pi]] + 1;
             ansy = yd[yr];
